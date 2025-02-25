@@ -1,5 +1,5 @@
-import React from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import MainPage from './components/MainPage/MainPage';
 import Navbar from './components/Navbar/Navbar';
 import RegisterPage from './components/RegisterPage/RegisterPage';
@@ -12,20 +12,24 @@ import './App.css';
 
 function App() {
 
+  useEffect(() => {
+    if (window.location.pathname === "/") {
+      window.location.href = "/home.html";
+    }
+  }, []);
+
   return (
     <>
-        <Navbar/>
-        <Routes>
-          {/* the final code will not pass the products to every page, but each page will call the server API */}
-          <Route path="/" element={<MainPage />} />
-          <Route path="/app" element={<MainPage />} />
-          <Route path="/app/login" element={<LoginPage />} />
-          <Route path="/app/register" element={<RegisterPage />} />
-          <Route path="/app/details/:productId" element={<DetailsPage />} />
-          <Route path="/app/search" element={<SearchPage />} />
-          <Route path="/app/profile" element={<Profile/>} />
-        </Routes>
-        </>
+      <Navbar/>
+      <Routes>
+        <Route path="/app" element={<MainPage />} />
+        <Route path="/app/login" element={<LoginPage />} />
+        <Route path="/app/register" element={<RegisterPage />} />
+        <Route path="/app/product/:productId" element={<DetailsPage />} />
+        <Route path="/app/search" element={<SearchPage />} />
+        <Route path="/app/profile" element={<Profile/>} />
+      </Routes>
+    </>
   );
 }
 

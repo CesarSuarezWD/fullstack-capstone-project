@@ -37,7 +37,7 @@ export default function Navbar() {
         className="navbar navbar-expand-lg navbar-light bg-light"
         id="navbar_container"
       >
-        <a className="navbar-brand" href={`${urlConfig.backendUrl}/app`}>
+        <a className="navbar-brand" href={`/app`}>
           GiftLink
         </a>
 
